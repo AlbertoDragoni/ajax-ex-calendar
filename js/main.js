@@ -6,6 +6,7 @@ $('document').ready(function(){
 
     var dataIniziale = moment('2018-01-01');
     stampaGiorniMese(dataIniziale);
+    stampaFestivi();
 
     $('.mese-succ').click(function(){
         dataIniziale.add(1, 'months');
@@ -16,6 +17,28 @@ $('document').ready(function(){
         dataIniziale.subtract(1, 'months');
         stampaGiorniMese(dataIniziale);
     });
+
+    function stampaFestivi() {
+        $.ajax({
+            url: 'https://flynn.boolean.careers/exercises/api/holidays?',
+            method: 'GET',
+            data: {
+                year: 2018,
+                month: 0
+            },
+            success: function (data){
+                var giorniFestivi = data.response;
+                for (var i = 0; i < giorniFestivi.length; i++) {
+                    var giornoFestivo = giorniFestivi[i]
+                    var nomeFestivo = giornoFestivo.name;
+                    var dataFestivo = giornoFestivo.date;
+                    console.log(nomeFestivo);
+                    console.log(dataFestivo);
+                }
+            }
+        });
+    };
+
 
     function stampaGiorniMese (meseDaStampare){
         $('#calendar').empty();
