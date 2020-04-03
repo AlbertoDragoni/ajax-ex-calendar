@@ -32,7 +32,7 @@ $('document').ready(function(){
                     var giornoFestivo = giorniFestivi[i]
                     var nomeFestivo = giornoFestivo.name;
                     var dataFestivo = giornoFestivo.date;
-                    $('#calendar li[data-day="' + dataFestivo + '"]').addClass('festivo');
+                    $('#calendar li[data-day="' + dataFestivo + '"]').addClass('festivo').append('-' + nomeFestivo);
                 }
             }
         });
