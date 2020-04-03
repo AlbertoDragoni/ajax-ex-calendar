@@ -5,21 +5,30 @@ $('document').ready(function(){
 
 
     var dataIniziale = moment('2018-01-01');
-    console.log(dataIniziale);
+    stampaGiorniMese(dataIniziale);
 
-    var giorniMese = dataIniziale.daysInMonth();
-    console.log(giorniMese);
+    $('.mese-succ').click(function(){
+        dataIniziale.add(1, 'months');
+        stampaGiorniMese(dataIniziale);
+    });
 
-    var nomeMese = dataIniziale.format('MMMM');
-    console.log(nomeMese);
+    $('.mese-prec').click(function(){
+        dataIniziale.subtract(1, 'months');
+        stampaGiorniMese(dataIniziale);
+    });
 
-    for (var i = 1; i <= giorniMese; i++) {
-        var giornoDaInserire = {
-            day: i + ' ' + nomeMese
-        }
-        var templateFinale = templateGiorno(giornoDaInserire);
-        $('#calendar').append(templateFinale);
+    function stampaGiorniMese (meseDaStampare){
+        $('#calendar').empty();
+        var giorniMese = meseDaStampare.daysInMonth();
+        var nomeMese = meseDaStampare.format('MMMM');
+        $('#nome-mese').text(nomeMese);
+        for (var i = 1; i <= giorniMese; i++) {
+            var giornoDaInserire = {
+                day: i + ' ' + nomeMese
+            }
+            var templateFinale = templateGiorno(giornoDaInserire);
+            $('#calendar').append(templateFinale);
+        };
     };
-
 
 });

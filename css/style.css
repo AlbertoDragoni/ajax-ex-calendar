@@ -6,6 +6,7 @@
     align-items: center;
     flex-direction: column;
 }
-#calendar li {
+#calendar li,
+#nome-mese {
     text-transform: capitalize;
 }
