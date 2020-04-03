@@ -32,8 +32,7 @@ $('document').ready(function(){
                     var giornoFestivo = giorniFestivi[i]
                     var nomeFestivo = giornoFestivo.name;
                     var dataFestivo = giornoFestivo.date;
-                    console.log(nomeFestivo);
-                    console.log(dataFestivo);
+                    $('#calendar li[data-day="' + dataFestivo + '"]').addClass('festivo');
                 }
             }
         });
@@ -42,15 +41,18 @@ $('document').ready(function(){
 
     function stampaGiorniMese (meseDaStampare){
         $('#calendar').empty();
+        var standardDay = meseDaStampare.clone();
         var giorniMese = meseDaStampare.daysInMonth();
         var nomeMese = meseDaStampare.format('MMMM');
         $('#nome-mese').text(nomeMese);
         for (var i = 1; i <= giorniMese; i++) {
             var giornoDaInserire = {
-                day: i + ' ' + nomeMese
+                day: i + ' ' + nomeMese,
+                dataDay: standardDay.format('YYYY-MM-DD')
             }
             var templateFinale = templateGiorno(giornoDaInserire);
             $('#calendar').append(templateFinale);
+            standardDay.add(1,'day');
         };
     };
 

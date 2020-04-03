@@ -10,3 +10,6 @@
 #nome-mese {
     text-transform: capitalize;
 }
+.festivo  {
+    color: red;
+}
