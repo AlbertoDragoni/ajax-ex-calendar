@@ -14,6 +14,9 @@ $('document').ready(function(){
         var mese = dataIniziale.month();
         stampaGiorniMese(dataIniziale);
         stampaFestivi(mese);
+        if (mese.format('YYYY') == 2019) {
+            alert('non puoi accedere al 2017!');
+        }
     });
 
     $('.mese-prec').click(function(){
