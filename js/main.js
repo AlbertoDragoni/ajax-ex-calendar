@@ -11,16 +11,16 @@ $('document').ready(function(){
 
     $('.mese-succ').click(function(){
         dataIniziale.add(1, 'months');
-        var meseAttuale = dataIniziale.month();
+        var mese = dataIniziale.month();
         stampaGiorniMese(dataIniziale);
-        stampaFestivi(meseAttuale);
+        stampaFestivi(mese);
     });
 
     $('.mese-prec').click(function(){
         dataIniziale.subtract(1, 'months');
-        var meseAttuale = dataIniziale.month();
+        var mese = dataIniziale.month();
         stampaGiorniMese(dataIniziale);
-        stampaFestivi(meseAttuale);
+        stampaFestivi(mese);
     });
 
     function stampaFestivi(mese) {
