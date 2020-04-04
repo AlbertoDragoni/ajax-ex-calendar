@@ -5,26 +5,31 @@ $('document').ready(function(){
 
 
     var dataIniziale = moment('2018-01-01');
+    var meseIniziale = dataIniziale.month();
     stampaGiorniMese(dataIniziale);
-    stampaFestivi();
+    stampaFestivi(meseIniziale);
 
     $('.mese-succ').click(function(){
         dataIniziale.add(1, 'months');
+        var meseAttuale = dataIniziale.month();
         stampaGiorniMese(dataIniziale);
+        stampaFestivi(meseAttuale);
     });
 
     $('.mese-prec').click(function(){
         dataIniziale.subtract(1, 'months');
+        var meseAttuale = dataIniziale.month();
         stampaGiorniMese(dataIniziale);
+        stampaFestivi(meseAttuale);
     });
 
-    function stampaFestivi() {
+    function stampaFestivi(mese) {
         $.ajax({
             url: 'https://flynn.boolean.careers/exercises/api/holidays?',
             method: 'GET',
             data: {
                 year: 2018,
-                month: 0
+                month: mese
             },
             success: function (data){
                 var giorniFestivi = data.response;
