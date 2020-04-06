@@ -20,14 +20,16 @@
     width: 600px;
     height: 500px;
     border: 3px solid black;
-}
-/* .top-calendar,
-.main-calendar {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-} */
+    flex-wrap: wrap;
+}
+.template-casella {
+    display: flex;
+    flex-wrap: wrap;
+    width: 120px;
+    height: calc(100% / 5);
+    border: 1px solid black;
+}
 .btn-navigation {
      padding: 5px 20px;
      border-radius: 5px;
@@ -41,7 +43,6 @@
      background-color: #efefef;
      cursor: not-allowed;
 }
-#calendar li,
 #nome-mese {
     text-transform: capitalize;
 }

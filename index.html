@@ -20,16 +20,15 @@
                 </div>
             </div>
             <div class="calendario-retro">
-                <div class="main-calendar">
-                    <ul id="calendar">
-    
-                    </ul>
-                </div>
+                <!-- <ul id="calendar"></ul> -->
+                <div class="casella" id="calendar"></div>
             </div>
         </div>
 
         <script id="calendar-template" type="text/x-handlebars-template">
-            <li data-day='{{dataDay}}'> {{day}} </li>
+            <div class="template-casella">
+                <li data-day='{{dataDay}}'> {{day}} </li>
+            </div>
         </script>
 
         <script src="js/main.js" charset="utf-8"></script>
