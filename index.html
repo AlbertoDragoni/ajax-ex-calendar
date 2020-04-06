@@ -21,15 +21,17 @@
             </div>
             <div class="calendario-retro">
                 <!-- <ul id="calendar"></ul> -->
-                <div class="casella" id="calendar"></div>
-            </div>
-        </div>
+                <ul id="calendar">
 
-        <script id="calendar-template" type="text/x-handlebars-template">
-            <div class="template-casella">
-                <li data-day='{{dataDay}}'> {{day}} </li>
+                </ul>
             </div>
-        </script>
+
+        </div>
+            <script id="calendar-template" type="text/x-handlebars-template">
+                <li class="template-casella">
+                    <div data-day='{{dataDay}}'> {{day}} </div>
+                </li>
+            </script>
 
         <script src="js/main.js" charset="utf-8"></script>
     </body>
