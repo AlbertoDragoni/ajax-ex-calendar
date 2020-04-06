@@ -12,26 +12,24 @@ $('document').ready(function(){
     stampaFestivi(meseIniziale);
 
     $('.mese-succ').click(function(){
-        if(dataIniziale.isSameOrAfter(limiteFinale)){
-              alert('No way man! ');
-         } else {
              $('.mese-prec').prop('disabled', false);
              dataIniziale.add(1, 'months');
              var mese = dataIniziale.month();
              stampaGiorniMese(dataIniziale);
              stampaFestivi(mese);
-         }
     });
 
     $('.mese-prec').click(function(){
         if(dataIniziale.isSameOrBefore(limiteIniziale)){
               alert('No way man! ');
          } else {
-             $('.mese-succ').prop('disabled', false);
              dataIniziale.subtract(1, 'months');
              var mese = dataIniziale.month();
              stampaGiorniMese(dataIniziale);
              stampaFestivi(mese);
+             if(dataIniziale.isSameOrBefore(limiteIniziale)) {
+                $('.mese-prec').prop('disabled', true);
+           }
          }
     });
 
