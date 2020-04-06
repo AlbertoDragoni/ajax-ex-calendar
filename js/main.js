@@ -62,12 +62,15 @@ $('document').ready(function(){
         });
     };
 
-
     function stampaGiorniMese (meseDaStampare){
         $('#calendar').empty();
         var standardDay = meseDaStampare.clone();
         var giorniMese = meseDaStampare.daysInMonth();
         var nomeMese = meseDaStampare.format('MMMM');
+        var weekDay = meseDaStampare.isoWeekday();
+        for (var i = 1; i < weekDay; i++) {
+            $('#calendar').append('<li class="template-casella"></li>');
+        }
         $('#nome-mese').text(nomeMese);
         for (var i = 1; i <= giorniMese; i++) {
             var giornoDaInserire = {
