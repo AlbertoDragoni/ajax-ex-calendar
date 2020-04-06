@@ -7,22 +7,31 @@ $('document').ready(function(){
     var dataIniziale = moment('2018-01-01');
     var meseIniziale = dataIniziale.month();
     var limiteIniziale = moment('2018-01-01');
-    var limiteFinale = moment('2018-12-31');
+    var limiteFinale = moment('2018-12-01');
     stampaGiorniMese(dataIniziale);
     stampaFestivi(meseIniziale);
+    $('.mese-prec').prop('disabled', true);
 
     $('.mese-succ').click(function(){
-             $('.mese-prec').prop('disabled', false);
-             dataIniziale.add(1, 'months');
-             var mese = dataIniziale.month();
-             stampaGiorniMese(dataIniziale);
-             stampaFestivi(mese);
+             if(dataIniziale.isSameOrAfter(limiteFinale)){
+                   alert('No way man! ');
+              } else {
+                   $('.mese-prec').prop('disabled', false);
+                  dataIniziale.add(1, 'months');
+                  var mese = dataIniziale.month();
+                  stampaGiorniMese(dataIniziale);
+                  stampaFestivi(mese);
+                  if(dataIniziale.isSameOrAfter(limiteFinale)) {
+                     $('.mese-succ').prop('disabled', true);
+                }
+              }
     });
 
     $('.mese-prec').click(function(){
         if(dataIniziale.isSameOrBefore(limiteIniziale)){
               alert('No way man! ');
          } else {
+             $('.mese-succ').prop('disabled', false);
              dataIniziale.subtract(1, 'months');
              var mese = dataIniziale.month();
              stampaGiorniMese(dataIniziale);
